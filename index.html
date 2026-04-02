@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTG ETF Genérico — Reporte Semanal</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -453,6 +455,26 @@
       pointer-events: none; z-index: 100;
     }
 
+    /* ── PDF BUTTON ── */
+    .pdf-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.30);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600;
+      border-radius: 22px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .pdf-btn:hover  { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
+    .pdf-btn:active { transform: translateY(0); }
+    .pdf-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .pdf-spin { display: inline-block; animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* Appear animation */
     .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -474,6 +496,7 @@
       <span class="badge badge-week">📅 23 – 29 de Marzo</span>
       <span class="badge badge-budget">💰 $298.524 ejecutados</span>
       <span class="badge badge-live">En curso</span>
+      <button id="pdf-btn" class="pdf-btn" onclick="downloadPDF()">📄 Descargar PDF</button>
     </div>
   </div>
 </header>
@@ -1197,6 +1220,126 @@ triggerAnimations();
 document.querySelector('[data-tab="performance"]').addEventListener('click', () => {
   setTimeout(initCharts, 100);
 });
+
+// ── PDF DOWNLOAD ──
+async function downloadPDF() {
+  const btn = document.getElementById('pdf-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="pdf-spin">⟳</span> Generando...';
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const tabs   = ['resumen', 'performance', 'audiencias', 'ga4'];
+    const labels = ['Resumen', 'Performance · Plataformas', 'Audiencias', 'GA4 & Analytics'];
+
+    // Save current state
+    const prevSection = document.querySelector('.section.active')?.id || 'section-resumen';
+    const prevTab     = document.querySelector('.tab.active')?.dataset.tab || 'resumen';
+
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+    const PW  = pdf.internal.pageSize.getWidth();   // 297 mm
+    const PH  = pdf.internal.pageSize.getHeight();  // 210 mm
+
+    for (let i = 0; i < tabs.length; i++) {
+      // Activate section
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      const sec = document.getElementById('section-' + tabs[i]);
+      sec.classList.add('active');
+      document.querySelector('[data-tab="' + tabs[i] + '"]')?.classList.add('active');
+
+      // Ensure charts are rendered for performance tab
+      if (tabs[i] === 'performance') {
+        initCharts();
+        await new Promise(r => setTimeout(r, 350));
+      }
+
+      // Force all animated elements to their final state
+      sec.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+      sec.querySelectorAll('.progress-bar-fill, .budget-bar-fill').forEach(el => {
+        if (el.dataset.width) { el.style.transition = 'none'; el.style.width = el.dataset.width + '%'; }
+      });
+      sec.querySelectorAll('[data-counter]').forEach(el => {
+        const val = parseInt(el.dataset.counter);
+        if (!isNaN(val)) {
+          el.textContent = el.dataset.format === 'money'
+            ? '$' + val.toLocaleString('es-CL')
+            : val.toLocaleString('es-CL');
+        }
+      });
+
+      window.scrollTo(0, 0);
+      await new Promise(r => setTimeout(r, 120));
+
+      // Capture
+      const mainEl = document.querySelector('.main');
+      const canvas = await html2canvas(mainEl, {
+        scale: 1.8,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#F0F4FF',
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 1300,
+        windowHeight: mainEl.scrollHeight + 100,
+        width:  mainEl.scrollWidth,
+        height: mainEl.scrollHeight,
+      });
+
+      if (i > 0) pdf.addPage();
+
+      // Header strip
+      pdf.setFillColor(0, 27, 78);
+      pdf.rect(0, 0, PW, 10, 'F');
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(7.5);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('BTG ETF GENÉRICO', 8, 6.5);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text(labels[i].toUpperCase(), PW / 2, 6.5, { align: 'center' });
+      pdf.text('23 – 29 de Marzo 2025  ·  Semana 1', PW - 8, 6.5, { align: 'right' });
+
+      // Footer strip
+      pdf.setFillColor(240, 244, 255);
+      pdf.rect(0, PH - 6, PW, 6, 'F');
+      pdf.setTextColor(100, 120, 160);
+      pdf.setFontSize(6.5);
+      pdf.text('BTG Pactual Chile · MKT & Comunicaciones · Uso interno', PW / 2, PH - 2, { align: 'center' });
+      pdf.text(`Pág. ${i + 1} / ${tabs.length}`, PW - 8, PH - 2, { align: 'right' });
+
+      // Page content
+      const topOffset  = 11;
+      const botOffset  = 7;
+      const availH     = PH - topOffset - botOffset;
+      const imgData    = canvas.toDataURL('image/jpeg', 0.93);
+      const ratio      = canvas.height / canvas.width;
+      const imgH       = PW * ratio;
+
+      if (imgH <= availH) {
+        pdf.addImage(imgData, 'JPEG', 0, topOffset, PW, imgH);
+      } else {
+        const scaledW = availH / ratio;
+        const offsetX = (PW - scaledW) / 2;
+        pdf.addImage(imgData, 'JPEG', offsetX, topOffset, scaledW, availH);
+      }
+    }
+
+    // Restore original state
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(prevSection)?.classList.add('active');
+    document.querySelector('[data-tab="' + prevTab + '"]')?.classList.add('active');
+
+    pdf.save('BTG_ETF_Generico_23-29Marzo.pdf');
+
+  } catch (err) {
+    console.error('PDF error:', err);
+    alert('No se pudo generar el PDF. Intentá de nuevo.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '📄 Descargar PDF';
+  }
+}
 </script>
 </body>
 </html>
