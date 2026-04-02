@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only server-side (Firebase Admin SDK) can write
+    // Read access requires authentication
+    match /campaigns/{campaignId}/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only via Admin SDK (Cloud Functions)
+    }
+  }
+}

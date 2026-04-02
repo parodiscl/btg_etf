@@ -1,0 +1,19 @@
+# Dependencies
+firebase/functions/node_modules/
+
+# Credentials — NUNCA subir al repo
+mcp_server/credentials/
+*.json.key
+*service_account*.json
+
+# Firebase
+.firebase/
+firebase/.cache/
+
+# Python
+__pycache__/
+*.pyc
+mcp_server/__pycache__/
+
+# macOS
+.DS_Store
