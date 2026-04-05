@@ -619,23 +619,27 @@
     .funnel-m .fm-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); font-weight: 600; }
 
     /* ── BUDGET GAUGE ── */
-    .budget-card {
-      background: linear-gradient(135deg, var(--btg-dark) 0%, var(--btg-primary) 100%);
-      border-radius: 16px;
-      padding: 28px;
-      color: #fff;
-      box-shadow: var(--shadow-lg);
+    .budget-card,
+    .projection-card {
+      border-radius: 16px; padding: 28px; color: #fff;
+      box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
     }
-    .budget-card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; font-weight: 600; }
-    .budget-big { font-size: 42px; font-weight: 900; letter-spacing: -2px; margin: 10px 0 4px; }
-    .budget-sub { font-size: 13px; opacity: 0.65; }
-    .budget-bar-bg { height: 10px; background: rgba(255,255,255,0.15); border-radius: 99px; margin-top: 20px; overflow: hidden; }
+    .budget-card { background: linear-gradient(135deg, var(--btg-dark) 0%, var(--btg-primary) 100%); }
+    .budget-card h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; color: rgba(255,255,255,0.55); margin: 0 0 10px; line-height: 1; }
+    .budget-big { font-size: 42px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #fff; margin: 0 0 6px; }
+    .budget-sub { font-size: 12px; color: rgba(255,255,255,0.50); margin: 0 0 20px; }
+    .budget-bar-bg { height: 8px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; margin: 0 0 14px; }
     .budget-bar-fill {
       height: 100%; border-radius: 99px;
       background: linear-gradient(90deg, var(--btg-gold), #fbbf24);
       width: 0; transition: width 1.4s cubic-bezier(0.22,1,0.36,1);
     }
-    .budget-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; opacity: 0.65; }
+    .budget-legend { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.50); }
+    .budget-footer, .proj-footer {
+      font-size: 11px; color: rgba(255,255,255,0.40);
+      margin-top: auto; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10); line-height: 1.4;
+    }
 
     /* ── INSIGHT BOX ── */
     .insight-box {
@@ -765,24 +769,17 @@
     }
 
     /* ── PROJECTION CARD ── */
-    .projection-card {
-      background: linear-gradient(135deg, var(--btg-primary) 0%, var(--btg-dark) 100%);
-      border-radius: 16px; padding: 22px 20px;
-      box-shadow: var(--shadow-lg);
-      color: #fff; display: flex; flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .projection-card { background: linear-gradient(135deg, var(--btg-primary) 0%, var(--btg-dark) 100%); transition: transform 0.2s, box-shadow 0.2s; }
     .projection-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,66,165,0.3); }
-    .proj-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: 6px; }
-    .proj-value { font-size: 42px; font-weight: 900; color: #F59E0B; letter-spacing: -2px; line-height: 1; }
-    .proj-sub   { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; margin-bottom: 14px; }
-    .proj-bar-bg   { height: 6px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; margin-bottom: 14px; }
+    .proj-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; color: rgba(255,255,255,0.55); margin: 0 0 10px; line-height: 1; }
+    .proj-value { font-size: 42px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #fff; margin: 0 0 6px; }
+    .proj-sub   { font-size: 12px; color: rgba(255,255,255,0.50); margin: 0 0 20px; }
+    .proj-bar-bg   { height: 8px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; margin: 0 0 14px; }
     .proj-bar-fill { height: 100%; background: linear-gradient(90deg,#F59E0B,#fbbf24); border-radius: 99px; }
-    .proj-breakdown { display: flex; flex-direction: column; gap: 7px; }
+    .proj-breakdown { display: flex; flex-direction: column; gap: 8px; }
     .proj-item { display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
-    .proj-item-label { color: rgba(255,255,255,0.5); }
+    .proj-item-label { color: rgba(255,255,255,0.50); }
     .proj-item-val   { font-weight: 700; font-size: 12px; }
-    .proj-footer { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
 
     /* ── KPI DUO CARD ── */
     .kpi-duo-card {
@@ -951,9 +948,8 @@
           <span>$0</span>
           <span>$3.800.000</span>
         </div>
-        <div class="budget-legend" style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.15); opacity:0.55">
-          <span>Semana 1 de 4</span>
-          <span>Presupuesto al 34%</span>
+        <div class="budget-footer">
+          <span>Semana 1 de 4 · Presupuesto al 34%</span>
         </div>
       </div>
 
