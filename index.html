@@ -126,7 +126,7 @@
       set('ga4-funnel-sesiones', fmt(week.total_sessions));
       set('ga4-btn-usuarios',    fmt(week.button_users));
       set('ga4-btn-eventos',     fmt(week.button_events));
-      if (week.period) set('ga4-periodo', '📅 ' + week.period);
+      if (week.period) set('ga4-periodo', week.period);
 
       // ── Gráfico: sesiones por fuente/medio ──
       if (week.campaigns?.length) {
@@ -274,30 +274,30 @@
       position: absolute; inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
-    .header-inner { position: relative; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .header-brand { display: flex; align-items: center; gap: 16px; }
+    .header-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .header-brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
     .logo-box {
-      width: 52px; height: 52px;
+      width: 52px; height: 52px; flex-shrink: 0;
       background: rgba(255,255,255,0.15);
       border: 2px solid rgba(255,255,255,0.25);
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-weight: 900; font-size: 14px; color: #fff; letter-spacing: -0.5px;
     }
-    .header-title { color: #fff; }
-    .header-title h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
-    .header-title p  { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 3px; font-weight: 400; }
-    .header-badges { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 14px; border-radius: 20px;
-      font-size: 12px; font-weight: 600;
+    .header-title { color: #fff; min-width: 0; }
+    .header-title h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .header-title p  {
+      font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 5px;
+      font-weight: 400; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
     }
-    .badge-week    { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .badge-budget  { background: var(--btg-gold); color: #1a0f00; }
-    .badge-live    { background: var(--btg-green); color: #fff; }
-    .badge-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.4s infinite; }
+    .status-inline { display: inline-flex; align-items: center; gap: 5px; }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--btg-green); display: inline-block; flex-shrink: 0;
+      animation: pulse 1.4s infinite;
+    }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
     /* ── TABS ── */
     .tabs-bar {
@@ -369,13 +369,15 @@
     /* Mobile  ≤ 768px */
     @media (max-width: 768px) {
       /* Header */
-      .header { padding: 18px 16px 16px; }
-      .header-inner { gap: 12px; }
-      .header-title h1 { font-size: 17px; }
-      .header-title p  { font-size: 11px; }
+      .header { padding: 16px 16px 14px; }
+      .header-inner { gap: 10px; }
+      .header-title h1 { font-size: 15px; }
+      .header-title p  { font-size: 11px; gap: 4px; }
       .logo-box { width: 40px; height: 40px; font-size: 11px; border-radius: 10px; }
-      .header-badges { gap: 6px; }
-      .badge { padding: 5px 11px; font-size: 11px; }
+      .header-actions { gap: 8px; }
+      .pdf-label  { display: none; }
+      .user-name  { display: none; }
+      .user-badge { padding: 5px; border-radius: 50%; }
 
       /* Tabs — scrollable, no wrap */
       .tabs-bar {
@@ -446,8 +448,8 @@
 
     /* Small mobile  ≤ 480px */
     @media (max-width: 480px) {
-      .header-title h1 { font-size: 14px; letter-spacing: 0; }
-      .badge-budget    { display: none; }
+      .header-title h1 { font-size: 13px; letter-spacing: 0; }
+      .status-inline   { display: none; }
 
       .kpi-value  { font-size: 26px; }
       .budget-big { font-size: 28px; }
@@ -697,6 +699,7 @@
     .pdf-btn:hover  { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
     .pdf-btn:active { transform: translateY(0); }
     .pdf-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .pdf-btn svg { flex-shrink: 0; }
     .pdf-spin { display: inline-block; animation: spin 0.9s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -812,17 +815,28 @@
       <div class="logo-box">BTG</div>
       <div class="header-title">
         <h1>ETF Genérico — Campaña Digital</h1>
-        <p>Asset Management · Etapa de Awareness · Mes 1</p>
+        <p>
+          Asset Management · Etapa de Awareness · Mes 1
+          <span style="color:rgba(255,255,255,0.3)">·</span>
+          <span id="ga4-periodo">24–30 Mar</span>
+          <span style="color:rgba(255,255,255,0.3)">·</span>
+          <span class="status-inline"><span class="status-dot"></span>En curso</span>
+        </p>
       </div>
     </div>
-    <div class="header-badges">
-      <span class="badge badge-week" id="ga4-periodo">📅 23 – 29 de Marzo</span>
-      <span class="badge badge-budget">💰 $1.277.178 ejecutados</span>
-      <span class="badge badge-live">En curso</span>
-      <button id="pdf-btn" class="pdf-btn" onclick="downloadPDF()">📄 Descargar PDF</button>
+    <div class="header-actions">
+      <button id="pdf-btn" class="pdf-btn" onclick="downloadPDF()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="8" y1="13" x2="16" y2="13"/>
+          <line x1="8" y1="17" x2="16" y2="17"/>
+        </svg>
+        <span class="pdf-label">Descargar PDF</span>
+      </button>
       <div class="user-badge" onclick="doLogout()" title="Cerrar sesión">
         <div class="user-avatar" id="user-avatar"></div>
-        <span id="user-name"></span>
+        <span class="user-name" id="user-name"></span>
       </div>
     </div>
   </div>
