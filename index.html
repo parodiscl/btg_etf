@@ -97,6 +97,7 @@
       set('ga4-usuarios',        fmt(week.total_users));
       set('ga4-sesiones',        fmt(week.total_sessions));
       set('ga4-duracion',        week.total_avg_duration || '00:00');
+      set('resumen-duracion',    week.total_avg_duration || '—');
       set('ga4-sesiones-acum',   fmt(summary.sessions_acum));
       set('ga4-usuarios-acum',   fmt(summary.users_acum));
       set('ga4-pct-sesiones',    summary.sessions_acum ? Math.round((summary.sessions_acum / 11000) * 100) + '%' : '0%');
@@ -803,14 +804,14 @@
           <div class="value" data-counter="13175" data-format="number">0</div>
           <div class="sub">CPV $23</div>
         </div>
-        <div class="stat-mini fade-in" data-tooltip="Costo por mil impresiones promedio">
-          <div class="label">CPM total</div>
-          <div class="value">$1.368</div>
-          <div class="sub">semana</div>
+        <div class="stat-mini fade-in" data-tooltip="Impresiones ÷ Alcance · meta 2.7">
+          <div class="label">Frecuencia</div>
+          <div class="value">1.75</div>
+          <div class="sub">meta 2.7</div>
         </div>
-        <div class="stat-mini fade-in" data-tooltip="Duración media en landing">
+        <div class="stat-mini fade-in" data-tooltip="Duración media de sesión en landing (GA4)">
           <div class="label">Duración</div>
-          <div class="value">10 min</div>
+          <div class="value" id="resumen-duracion">—</div>
           <div class="sub">en landing</div>
         </div>
       </div>
