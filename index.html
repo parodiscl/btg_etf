@@ -770,16 +770,26 @@
 
     /* ── KPI DUO CARD ── */
     .kpi-duo-card {
-      background: #fff; border-radius: 16px; padding: 20px 22px;
-      box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: linear-gradient(165deg, #ffffff 0%, #f6f8fc 100%);
+      border-top: 3px solid var(--btg-gold);
+      border-left: 1px solid rgba(0,31,91,0.06);
+      border-right: 1px solid rgba(0,31,91,0.06);
+      border-bottom: 1px solid rgba(0,31,91,0.06);
+      border-radius: 16px; padding: 22px 24px;
+      box-shadow: 0 1px 3px rgba(0,31,91,0.06), 0 4px 12px rgba(0,31,91,0.04);
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
     }
-    .kpi-duo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .kpi-duo-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,31,91,0.08), 0 12px 28px rgba(0,31,91,0.07); }
     .kpi-duo-item { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-    .kpi-duo-item + .kpi-duo-item { border-top: 1px solid var(--border); padding-top: 14px; margin-top: 14px; }
-    .kpi-duo-item .di-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
-    .kpi-duo-item .di-value { font-size: 22px; font-weight: 800; color: var(--btg-dark); letter-spacing: -0.5px; }
-    .kpi-duo-item .di-sub   { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .kpi-duo-item + .kpi-duo-item { border-top: none; padding-top: 16px; margin-top: 16px; position: relative; }
+    .kpi-duo-item + .kpi-duo-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0,66,165,0.15) 20%, rgba(0,66,165,0.15) 80%, transparent 100%);
+    }
+    .kpi-duo-item .di-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--btg-primary); opacity: 0.7; font-weight: 700; margin-bottom: 6px; }
+    .kpi-duo-item .di-value { font-size: 26px; font-weight: 800; color: var(--btg-dark); letter-spacing: -0.5px; line-height: 1.1; }
+    .kpi-duo-item .di-sub   { font-size: 11px; color: rgba(0,31,91,0.45); margin-top: 4px; font-weight: 500; letter-spacing: 0.2px; }
 
     /* ── USER BADGE ── */
     .user-badge {
