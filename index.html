@@ -98,6 +98,7 @@
       set('ga4-sesiones',        fmt(week.total_sessions));
       set('ga4-duracion',        week.total_avg_duration || '00:00');
       set('resumen-duracion',    week.total_avg_duration || '—');
+      set('search-duracion',     week.total_avg_duration || '—');
 
       // ── Lectura ejecutiva dinámica ──
       const dur     = week.total_avg_duration || '—';
@@ -965,6 +966,10 @@
             <div class="m-label">Clics</div>
             <div class="m-value" data-counter="116" data-format="number">0</div>
           </div>
+          <div class="metric-item" style="grid-column:1/-1">
+            <div class="m-label">Duración media de sesión</div>
+            <div class="m-value" id="search-duracion" style="color:var(--btg-green)">—</div>
+          </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
@@ -972,7 +977,7 @@
           <div class="cpm-item"><div class="cpm-label">CTR</div><div class="cpm-val">4.7%</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
-          <p style="font-size:12px">🔍 <strong>Captura intención de búsqueda</strong>. Usuarios que ya buscan ETFs activamente.</p>
+          <p style="font-size:12px">🔍 <strong>Captura intención de búsqueda</strong>. Usuarios que ya buscan ETFs activamente — la duración de sesión refleja un interés genuino y profundo.</p>
         </div>
       </div>
     </div>
