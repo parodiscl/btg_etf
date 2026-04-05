@@ -98,6 +98,27 @@
       set('ga4-sesiones',        fmt(week.total_sessions));
       set('ga4-duracion',        week.total_avg_duration || '00:00');
       set('resumen-duracion',    week.total_avg_duration || '—');
+
+      // ── Lectura ejecutiva dinámica ──
+      const dur     = week.total_avg_duration || '—';
+      const imp     = 933944;
+      const alc     = 533761;
+      const clics   = 1453;
+      const frec    = (imp / alc).toFixed(2);
+      const pctImp  = ((imp / 5000000)  * 100).toFixed(1);
+      const pctAlc  = ((alc / 1800000)  * 100).toFixed(1);
+      const fmtN    = n => n.toLocaleString('es-CL');
+      const lectura = document.getElementById('lectura-ejecutiva');
+      if (lectura) lectura.innerHTML = `
+        En la primera semana de campaña, ETF Genérico acumula <strong>${fmtN(alc)} personas alcanzadas</strong> y
+        <strong>${fmtN(imp)} impresiones</strong> combinando agencia y otros medios
+        — avance del <strong>${pctImp}%</strong> y <strong>${pctAlc}%</strong> sobre las metas del mes.
+        La <strong>frecuencia promedio es ${frec}</strong> impactos por persona (meta 2.7), y la
+        <strong>duración media de ${dur} en landing</strong> refleja un alto nivel de intención e interés genuino en los ETF.
+        Con <strong>${fmtN(clics)} clics totales</strong>, Meta lidera en volumen, DF Digital y Emol amplían la cobertura editorial,
+        y LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong>.
+        El ritmo actual proyecta una cobertura del <strong>75%–100%+ de las metas mensuales</strong> de impresiones y alcance al final del mes.
+      `;
       set('ga4-sesiones-acum',   fmt(summary.sessions_acum));
       set('ga4-usuarios-acum',   fmt(summary.users_acum));
       set('ga4-pct-sesiones',    summary.sessions_acum ? Math.round((summary.sessions_acum / 11000) * 100) + '%' : '0%');
@@ -819,7 +840,7 @@
 
     <p class="section-title" style="margin-top:36px">Lectura ejecutiva</p>
     <div class="insight-box fade-in">
-      <p>
+      <p id="lectura-ejecutiva">
         En la primera semana de campaña, ETF Genérico acumula <strong>533.761 personas alcanzadas</strong> y <strong>933.944 impresiones</strong> combinando agencia y otros medios — avance sólido para ser solo la semana de lanzamiento.
         Los <strong>1.453 clics totales</strong> y la <strong>duración media de 10 minutos en landing</strong> reflejan un alto nivel de intención e interés genuino en los ETF.
         Meta entrega el mayor volumen al menor costo (<strong>CPM $215</strong>), mientras DF Digital, Emol y Bio Bio amplían la cobertura editorial, y LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong>.
