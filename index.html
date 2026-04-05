@@ -128,6 +128,72 @@
       set('ga4-btn-eventos',     fmt(week.button_events));
       if (week.period) set('ga4-periodo', '📅 ' + week.period);
 
+      // ── Gráfico: sesiones por fuente/medio ──
+      if (week.campaigns?.length) {
+        const sourceMap = {};
+        for (const camp of week.campaigns) {
+          for (const src of (camp.sources || [])) {
+            const key = src.source_medium || 'desconocido';
+            sourceMap[key] = (sourceMap[key] || 0) + (src.sessions || 0);
+          }
+        }
+        const sorted   = Object.entries(sourceMap).sort((a, b) => b[1] - a[1]);
+        const labels   = sorted.map(([k]) => k);
+        const values   = sorted.map(([, v]) => v);
+        const colors   = labels.map(l =>
+          l.includes('google') || l.includes('cpc') ? '#4285F4' :
+          l.includes('linkedin')                     ? '#0A66C2' :
+          l.includes('meta') || l.includes('facebook') || l.includes('ig') ? '#1877F2' :
+          '#6B7280'
+        );
+
+        if (labels.length) {
+          set('ga4-source-period', week.period || 'Semana actual');
+          const ctx = document.getElementById('chartSourceMedium');
+          if (ctx) {
+            if (window._chartSourceMedium) window._chartSourceMedium.destroy();
+            window._chartSourceMedium = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels,
+                datasets: [{
+                  label: 'Sesiones',
+                  data: values,
+                  backgroundColor: colors,
+                  borderRadius: 6,
+                  borderSkipped: false,
+                }]
+              },
+              options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                  legend: { display: false },
+                  tooltip: {
+                    callbacks: {
+                      label: ctx => ` ${ctx.parsed.x.toLocaleString('es-CL')} sesiones`
+                    }
+                  }
+                },
+                scales: {
+                  x: {
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    ticks: { color: '#94A3B8', font: { size: 11 } }
+                  },
+                  y: {
+                    grid: { display: false },
+                    ticks: { color: '#CBD5E1', font: { size: 11 } }
+                  }
+                }
+              }
+            });
+          }
+        } else {
+          document.getElementById('ga4-source-empty').style.display = 'block';
+        }
+      }
+
       // Detalle por campaña
       const container = document.getElementById('ga4-campaigns');
       if (container && week.campaigns?.length) {
@@ -1360,6 +1426,16 @@
           <div style="font-size:28px; font-weight:900; color: var(--btg-green)" id="ga4-pct-sesiones">—</div>
           <div style="font-size:11px; color:var(--text-muted)">de meta 11.000</div>
         </div>
+      </div>
+    </div>
+
+    <p class="section-title">Sesiones por fuente / medio</p>
+    <div class="chart-card fade-in" style="margin-bottom:28px">
+      <h3 id="ga4-source-period">Semana actual</h3>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Sesiones atribuidas a la campaña ETF Genérico, desglosadas por fuente y medio</p>
+      <div id="ga4-source-empty" style="display:none;text-align:center;padding:32px;color:var(--text-muted);font-size:13px">Sin datos de fuente/medio disponibles</div>
+      <div class="chart-wrap" style="max-height:280px">
+        <canvas id="chartSourceMedium"></canvas>
       </div>
     </div>
 
