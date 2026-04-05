@@ -130,20 +130,40 @@
 
       // ── Gráfico: sesiones por fuente/medio ──
       if (week.campaigns?.length) {
+        // Acumular paid: sesiones + duración ponderada por fuente/medio
         const sourceMap = {};
+        const parseDur = d => { const [m,s] = (d||'00:00').split(':').map(Number); return m*60+s; };
+        const fmtDur   = sec => { const m=Math.floor(sec/60),s=Math.round(sec%60); return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; };
+
         for (const camp of week.campaigns) {
           for (const src of (camp.sources || [])) {
             const key = src.source_medium || 'desconocido';
-            sourceMap[key] = (sourceMap[key] || 0) + (src.sessions || 0);
+            if (!sourceMap[key]) sourceMap[key] = { sessions: 0, durSec: 0 };
+            sourceMap[key].sessions += (src.sessions || 0);
+            sourceMap[key].durSec   += parseDur(src.avg_duration) * (src.sessions || 0);
           }
         }
-        const sorted   = Object.entries(sourceMap).sort((a, b) => b[1] - a[1]);
-        const labels   = sorted.map(([k]) => k);
-        const values   = sorted.map(([, v]) => v);
-        const colors   = labels.map(l =>
-          l.includes('google') || l.includes('cpc') ? '#4285F4' :
-          l.includes('linkedin')                     ? '#0A66C2' :
-          l.includes('meta') || l.includes('facebook') || l.includes('ig') ? '#1877F2' :
+
+        // Agregar orgánico y directo (stored separately)
+        for (const src of (week.sources_other || [])) {
+          const key = src.source_medium || 'desconocido';
+          if (!sourceMap[key]) sourceMap[key] = { sessions: 0, durSec: 0 };
+          sourceMap[key].sessions += (src.sessions || 0);
+          sourceMap[key].durSec   += parseDur(src.avg_duration) * (src.sessions || 0);
+        }
+
+        const totalSessions = Object.values(sourceMap).reduce((s, v) => s + v.sessions, 0);
+        const sorted = Object.entries(sourceMap).sort((a, b) => b[1].sessions - a[1].sessions);
+        const labels = sorted.map(([k]) => k);
+        const values = sorted.map(([, v]) => v.sessions);
+        const durations = sorted.map(([, v]) => v.sessions > 0 ? fmtDur(v.durSec / v.sessions) : '—');
+        const pcts   = sorted.map(([, v]) => totalSessions > 0 ? ((v.sessions / totalSessions) * 100).toFixed(1) : '0');
+        const colors = labels.map(l =>
+          l.includes('organic')                                              ? '#34D399' :
+          l.includes('direct') || l.includes('(none)')                      ? '#94A3B8' :
+          l.includes('google') || l.includes('cpc')                         ? '#4285F4' :
+          l.includes('linkedin')                                             ? '#0A66C2' :
+          l.includes('meta') || l.includes('facebook') || l.includes('ig')  ? '#1877F2' :
           '#6B7280'
         );
 
@@ -172,7 +192,13 @@
                   legend: { display: false },
                   tooltip: {
                     callbacks: {
-                      label: ctx => ` ${ctx.parsed.x.toLocaleString('es-CL')} sesiones`
+                      label: ctx => {
+                        const i = ctx.dataIndex;
+                        return [
+                          ` ${ctx.parsed.x.toLocaleString('es-CL')} sesiones (${pcts[i]}%)`,
+                          ` Duración media: ${durations[i]}`
+                        ];
+                      }
                     }
                   }
                 },

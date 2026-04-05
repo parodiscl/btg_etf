@@ -64,12 +64,10 @@ async function runSync(startOverride = null, endOverride = null) {
   const dateRanges  = [{ startDate, endDate }];
 
   // Nombres de campaña a filtrar
-  const CAMPAIGN_ETF       = 'etf_generico';
   const CAMPAIGN_GOOGLE_ADS = '[BTG] (BTG Corp) - Search Tráfico Fondo ETF Genérico';
 
   // ── 1. Adquisición de tráfico por campaña y fuente/medio ──
-  // Reporte: dimensiones sessionCampaignName + sessionSourceMedium
-  // Filtro: solo las dos campañas ETF
+  // Filtro: campañas que contienen "btg_etf" + campaña exacta de Google Ads
   const [acqResp] = await client.runReport({
     property,
     dateRanges,
@@ -88,7 +86,7 @@ async function runSync(startOverride = null, endOverride = null) {
           {
             filter: {
               fieldName: 'sessionCampaignName',
-              stringFilter: { matchType: 'EXACT', value: CAMPAIGN_ETF },
+              stringFilter: { matchType: 'CONTAINS', value: 'btg_etf' },
             },
           },
           {
@@ -151,7 +149,34 @@ async function runSync(startOverride = null, endOverride = null) {
     ? fmtDuration(String(totalDurSec / total_sessions))
     : '00:00';
 
-  // ── 2. Botón "Ver Fondo" clicks (eventos dentro de las campañas ETF) ──
+  // ── 2. Orgánico y Directo ──
+  const [otherResp] = await client.runReport({
+    property,
+    dateRanges,
+    dimensions: [{ name: 'sessionSourceMedium' }],
+    metrics: [
+      { name: 'sessions' },
+      { name: 'totalUsers' },
+      { name: 'averageSessionDuration' },
+    ],
+    dimensionFilter: {
+      orGroup: {
+        expressions: [
+          { filter: { fieldName: 'sessionSourceMedium', stringFilter: { matchType: 'CONTAINS', value: 'organic' } } },
+          { filter: { fieldName: 'sessionSourceMedium', stringFilter: { matchType: 'EXACT',    value: '(direct) / (none)' } } },
+        ],
+      },
+    },
+  });
+
+  const sources_other = (otherResp.rows || []).map(row => ({
+    source_medium: row.dimensionValues[0].value,
+    sessions:      intVal(row.metricValues[0]),
+    users:         intVal(row.metricValues[1]),
+    avg_duration:  fmtDuration(row.metricValues[2]?.value),
+  }));
+
+  // ── 3. Botón "Ver Fondo" clicks (eventos dentro de las campañas ETF) ──
   const [eventsResp] = await client.runReport({
     property,
     dateRanges,
@@ -170,7 +195,7 @@ async function runSync(startOverride = null, endOverride = null) {
                 {
                   filter: {
                     fieldName: 'sessionCampaignName',
-                    stringFilter: { matchType: 'EXACT', value: CAMPAIGN_ETF },
+                    stringFilter: { matchType: 'CONTAINS', value: 'btg_etf' },
                   },
                 },
                 {
@@ -211,7 +236,8 @@ async function runSync(startOverride = null, endOverride = null) {
     total_avg_duration,
 
     // Detalle por campaña (con breakdown por fuente/medio)
-    campaigns: campaignsArr,
+    campaigns:     campaignsArr,
+    sources_other, // orgánico + directo
 
     // Botón Ver Fondo
     button_users:    intVal(bm?.[0]),
