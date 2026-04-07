@@ -73,18 +73,20 @@
     }
 
     // ── CARGAR DATOS GA4 DESDE FIRESTORE ──
+    // Carga siempre el documento del período completo de campaña (start = 2026-03-23)
+    const CAMPAIGN_DOC_ID = '2026-03-23_2026-04-06';
+
     async function loadGA4Data() {
       try {
-        const weeksRef = collection(db, 'campaigns', 'etf-generico', 'weeks');
-        const q        = query(weeksRef, orderBy('start_date', 'desc'), limit(1));
-        const snap     = await getDocs(q);
-        if (snap.empty) return;
+        const weekSnap = await getDoc(
+          doc(db, 'campaigns', 'etf-generico', 'weeks', CAMPAIGN_DOC_ID)
+        );
+        if (!weekSnap.exists()) {
+          console.warn('GA4: documento de período no encontrado:', CAMPAIGN_DOC_ID);
+          return;
+        }
 
-        const week        = snap.docs[0].data();
-        const summarySnap = await getDoc(doc(db, 'campaigns', 'etf-generico'));
-        const summary     = summarySnap.exists() ? summarySnap.data() : {};
-
-        renderGA4(week, summary);
+        renderGA4(weekSnap.data(), {});
       } catch (e) {
         console.error('Error GA4:', e);
       }
