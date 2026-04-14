@@ -234,10 +234,10 @@
           const medios  = (c.sources || []).map(s => s.source_medium.split(' / ')[0]).join(', ');
           return `
           <div class="stat-mini fade-in">
-            <div class="label" style="text-transform:none;letter-spacing:0">${label}</div>
+            <div class="label" style="text-transform:none;letter-spacing:0">${c.name}</div>
             <div class="value">${(c.sessions||0).toLocaleString('es-CL')}<span style="font-size:13px;font-weight:500"> ses.</span></div>
             <div class="sub">${(c.users||0).toLocaleString('es-CL')} usuarios · ${c.avg_duration} prom.</div>
-            <div class="sub" style="margin-top:4px;color:var(--btg-primary);font-size:11px">${medios}</div>
+            <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted)">📌 ${medios}</div>
           </div>`;
         }).join('');
       }
