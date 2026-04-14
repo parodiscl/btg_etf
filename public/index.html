@@ -113,11 +113,11 @@
       const lectura = document.getElementById('lectura-ejecutiva');
       // Calcular top 3 medios por duración de sesión desde fuentes GA4
       const allSources = (week.campaigns || []).flatMap(c => c.sources || []);
-      const EXCLUDE_SOURCES = ['sidebar_ML', 'instagram', 'money_talks'];
+      const EXCLUDE_SOURCES = ['sidebar_ML', 'money_talks'];
       const topSrc = allSources
         .filter(s => {
           const key = s.source_medium.split(' / ')[0];
-          return s.avg_duration && s.avg_duration !== '00:00' && s.sessions > 50 && !EXCLUDE_SOURCES.includes(key);
+          return s.avg_duration && s.avg_duration !== '00:00' && s.sessions > 2 && !EXCLUDE_SOURCES.includes(key);
         })
         .sort((a, b) => {
           const toSec = t => { const [m,s] = t.split(':').map(Number); return m*60+s; };
@@ -1079,7 +1079,7 @@
         <li><strong>3.469 clics</strong> y <strong>357.239 video views</strong> · duración media <strong>00:34</strong> en landing.</li>
         <li><strong>Meta</strong> lidera volumen (CPM $268) · <strong>LinkedIn</strong> llega al perfil inversor con 19 registros directos.</li>
         <li><strong>Medios Havas</strong> amplían cobertura editorial · La Tercera y CNN suman 3.1M impresiones adicionales.</li>
-        <li><strong>Mayor calidad de sesión:</strong> Emol (01:18) y DF Digital (01:12) — mayor tiempo de permanencia en landing.</li>
+        <li><strong>Mayor calidad de sesión:</strong> CNN Chile (04:45), Instagram (02:57) y Emol (01:18) — mayor tiempo de permanencia en landing.</li>
         <li><strong>4.537 sesiones en landing</strong> (41% de meta) · Google Search: <strong>4.5% CTR</strong> y 01:10 de permanencia promedio.</li>
       </ul>
     </div>
