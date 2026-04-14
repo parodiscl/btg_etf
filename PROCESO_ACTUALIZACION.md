@@ -2,7 +2,10 @@
 
 ## Antes de empezar — Preguntas obligatorias
 1. **¿Cuál es el período que estamos reportando?** (ej: "23 Mar – 12 Abr")
-2. **¿Cuál es la ruta del spreadsheet actualizado?**
+2. **¿Cuál es la ruta local del spreadsheet actualizado?**
+   ⚠️ **Debe ser una ruta local** (ej: `/Users/ap/Downloads/btg_etf_planilla.xlsx`), no una URL de Google Sheets.
+   Si solo tienes la URL, descárgalo primero: `Archivo > Descargar > Microsoft Excel (.xlsx)`
+   Sin archivo local, el proceso es 10x más lento.
 3. **¿Hay nuevas plataformas o audiencias que no estaban antes?**
 4. **¿El presupuesto mensual sigue siendo $3.800.000?**
 
