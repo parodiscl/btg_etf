@@ -102,24 +102,23 @@
 
       // ── Lectura ejecutiva dinámica ──
       const dur     = week.total_avg_duration || '—';
-      const imp     = 2356779;
-      const alc     = 1134662;
-      const clics   = 1794;
-      const views   = 147348;
-      const frec    = (imp / alc).toFixed(2);
-      const pctImp  = ((imp / 5000000)  * 100).toFixed(1);
+      const imp     = 10166381;
+      const alc     = 1521734;
+      const clics   = 3469;
+      const views   = 357239;
+      const frec    = (imp / alc).toFixed(1);
+      const pctImp  = ((imp / 5000000)  * 100).toFixed(0);
       const pctAlc  = ((alc / 1800000)  * 100).toFixed(1);
       const fmtN    = n => n.toLocaleString('es-CL');
       const lectura = document.getElementById('lectura-ejecutiva');
       if (lectura) lectura.innerHTML = `
-        En el período 23 Mar – 05 Abr, ETF Genérico acumula <strong>${fmtN(alc)} personas alcanzadas</strong> y
+        En el período 23 Mar – 12 Abr, ETF Genérico acumula <strong>${fmtN(alc)} personas alcanzadas</strong> y
         <strong>${fmtN(imp)} impresiones</strong> combinando Artool y Havas
-        — avance del <strong>${pctImp}%</strong> y <strong>${pctAlc}%</strong> sobre las metas del mes.
-        La <strong>frecuencia promedio es ${frec}</strong> impactos por persona (meta 2.7), y la
-        <strong>duración media de ${dur} en landing</strong> refleja un alto nivel de intención e interés genuino en los ETF.
-        Con <strong>${fmtN(clics)} clics</strong> y <strong>${fmtN(views)} views de video</strong>, Meta lidera en volumen, DF Digital y Emol amplían la cobertura editorial,
-        y LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong>.
-        El ritmo actual proyecta una cobertura del <strong>100%+ en impresiones y alcance</strong>, y un <strong>78% en sesiones de landing</strong> al cierre del mes.
+        — superando el <strong>${pctImp}%</strong> de la meta de impresiones y el <strong>${pctAlc}%</strong> de la meta de alcance mensual.
+        La <strong>duración media de ${dur} en landing</strong> refleja un alto nivel de intención e interés genuino en los ETF.
+        Con <strong>${fmtN(clics)} clics</strong> y <strong>${fmtN(views)} video views</strong>, Meta lidera en volumen, DF Digital y Emol amplían la cobertura editorial,
+        y LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong> con 19 registros directos.
+        Las nuevas incorporaciones La Tercera y CNN suman <strong>3.100.000 impresiones adicionales</strong> en medios de alta credibilidad.
       `;
       set('ga4-sesiones-acum',   fmt(summary.sessions_acum));
       set('ga4-usuarios-acum',   fmt(summary.users_acum));
@@ -914,7 +913,7 @@
       <div class="kpi-card fade-in">
         <div class="accent-bar" style="background: linear-gradient(90deg,#0042A5,#1E88E5)"></div>
         <div class="kpi-label">Impresiones</div>
-        <div class="kpi-value" data-counter="2356779" data-format="number">0</div>
+        <div class="kpi-value" data-counter="10166381" data-format="number">0</div>
         <div class="kpi-sub">veces que se ve la campaña</div>
         <div class="kpi-target-row">
           <span class="kpi-target-label">Meta: 5.000.000</span>
@@ -923,13 +922,13 @@
         <div class="progress-bar-bg">
           <div class="progress-bar-fill" data-width="47.1"></div>
         </div>
-        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 05 Abr</span> · ritmo proyectado al 100%+/mes</div>
+        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 12 Abr</span> · ritmo proyectado al 100%+/mes</div>
       </div>
 
       <div class="kpi-card fade-in">
         <div class="accent-bar" style="background: linear-gradient(90deg,#1565C0,#42A5F5)"></div>
         <div class="kpi-label">Alcance</div>
-        <div class="kpi-value" data-counter="1134662" data-format="number">0</div>
+        <div class="kpi-value" data-counter="1521734" data-format="number">0</div>
         <div class="kpi-sub">personas únicas impactadas</div>
         <div class="kpi-target-row">
           <span class="kpi-target-label">Meta: 1.800.000</span>
@@ -938,7 +937,7 @@
         <div class="progress-bar-bg">
           <div class="progress-bar-fill" data-width="63.0"></div>
         </div>
-        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 05 Abr</span> · ritmo proyectado al 100%+/mes</div>
+        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 12 Abr</span> · ritmo proyectado al 100%+/mes</div>
       </div>
 
       <div class="kpi-card fade-in">
@@ -953,17 +952,17 @@
         <div class="progress-bar-bg">
           <div class="progress-bar-fill" data-width="31.3" style="background: linear-gradient(90deg,#10B981,#34D399)"></div>
         </div>
-        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 05 Abr</span> · ritmo proyectado al 78%/mes</div>
+        <div class="kpi-meta">📌 <span class="kpi-week-label">23 Mar – 12 Abr</span> · ritmo proyectado al 78%/mes</div>
       </div>
     </div>
 
     <div class="grid-budget">
       <div class="budget-card fade-in">
         <div class="card-label">Presupuesto ejecutado</div>
-        <div class="card-big">60%</div>
-        <div class="card-sub">$2.290.207 de $3.800.000</div>
+        <div class="card-big">39%</div>
+        <div class="card-sub">$1.488.181 de $3.800.000</div>
         <div class="card-bar-bg">
-          <div class="card-bar-fill" data-width="60"></div>
+          <div class="card-bar-fill" data-width="39"></div>
           <div class="pacing-marker" id="budget-pacing-marker"></div>
         </div>
         <div class="bar-legend">
@@ -974,7 +973,7 @@
       </div>
 
       <!-- Proyección metas -->
-      <div class="projection-card fade-in" data-tooltip="Estimación al cierre del mes según ritmo del período 23 Mar – 05 Abr">
+      <div class="projection-card fade-in" data-tooltip="Estimación al cierre del mes según ritmo del período 23 Mar – 12 Abr">
         <div class="card-label">Proyección metas</div>
         <div class="card-big">86%</div>
         <div class="card-sub">estimado al cierre del mes</div>
@@ -1004,13 +1003,13 @@
       <div class="kpi-duo-card fade-in">
         <div class="kpi-duo-item">
           <div class="di-label">Clics</div>
-          <div class="di-value" data-counter="1794" data-format="number">0</div>
-          <div class="di-sub">CPC $442</div>
+          <div class="di-value" data-counter="3469" data-format="number">0</div>
+          <div class="di-sub">CPC $429</div>
         </div>
         <div class="kpi-duo-item">
           <div class="di-label">Video Views</div>
-          <div class="di-value" data-counter="147348" data-format="number">0</div>
-          <div class="di-sub">CPV $4</div>
+          <div class="di-value" data-counter="357239" data-format="number">0</div>
+          <div class="di-sub">CPV $3</div>
         </div>
       </div>
 
@@ -1018,7 +1017,7 @@
       <div class="kpi-duo-card fade-in">
         <div class="kpi-duo-item">
           <div class="di-label">CPM total</div>
-          <div class="di-value">$549</div>
+          <div class="di-value">$591</div>
           <div class="di-sub">acumulado</div>
         </div>
         <div class="kpi-duo-item">
@@ -1032,10 +1031,10 @@
     <p class="section-title" style="margin-top:36px">Lectura ejecutiva</p>
     <div class="insight-box fade-in">
       <p id="lectura-ejecutiva">
-        En los primeros 12 días de campaña, ETF Genérico acumula <strong>1.134.662 personas alcanzadas</strong> y <strong>2.356.779 impresiones</strong> combinando Artool y Havas — superando el 63% de la meta de alcance mensual.
-        Los <strong>1.794 clics totales</strong> y <strong>147.348 views de video</strong> reflejan un alto nivel de interés genuino en los ETF, impulsado principalmente por LinkedIn.
-        Meta lidera en volumen al menor CPM (<strong>$267</strong>), LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong>, y DF Digital, Emol y Bio Bio amplían la cobertura editorial.
-        El ritmo actual proyecta una cobertura del <strong>100%+ en impresiones y alcance</strong>, y un <strong>78% en sesiones de landing</strong> al cierre del mes.
+        En los primeros 20 días de campaña, ETF Genérico acumula <strong>1.521.734 personas alcanzadas</strong> y <strong>10.166.381 impresiones</strong> combinando Artool y Havas — superando el 203% de la meta de impresiones y el 84% de la meta de alcance mensual.
+        Los <strong>3.469 clics totales</strong> y <strong>357.239 video views</strong> reflejan un alto nivel de interés genuino en los ETF, impulsado principalmente por LinkedIn.
+        Meta lidera en volumen al menor CPM (<strong>$268</strong>), LinkedIn garantiza la llegada al <strong>perfil inversor profesional</strong> con 19 registros directos, y los medios Havas amplían masivamente la cobertura editorial.
+        Las nuevas incorporaciones La Tercera y CNN suman <strong>3.100.000 impresiones adicionales</strong> en medios de alta credibilidad financiera.
       </p>
     </div>
 
@@ -1048,15 +1047,15 @@
       <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--btg-primary);padding:3px 12px;border-radius:20px">Paid Social</span>
       <span style="font-size:12px;color:var(--text-muted)">Gestión: <strong style="color:var(--text-main)">Artool</strong></span>
     </div>
-    <p class="section-title">Resumen acumulado · 23 Mar – 05 Abr</p>
+    <p class="section-title">Resumen acumulado · 23 Mar – 12 Abr</p>
     <div class="total-row fade-in">
-      <div class="tr-item"><div class="tr-val" data-counter="792926" data-format="money">$0</div><div class="tr-label">Inversión</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="869662" data-format="number">0</div><div class="tr-label">Alcance</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="1443858" data-format="number">0</div><div class="tr-label">Impresiones</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="1794" data-format="number">0</div><div class="tr-label">Clics</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="147348" data-format="number">0</div><div class="tr-label">Video Views</div></div>
-      <div class="tr-item"><div class="tr-val">$549</div><div class="tr-label">CPM Promedio</div></div>
-      <div class="tr-item"><div class="tr-val">$442</div><div class="tr-label">CPC Promedio</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="1488181" data-format="money">$0</div><div class="tr-label">Inversión</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="1521734" data-format="number">0</div><div class="tr-label">Alcance</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="2519496" data-format="number">0</div><div class="tr-label">Impresiones</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="3469" data-format="number">0</div><div class="tr-label">Clics</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="357239" data-format="number">0</div><div class="tr-label">Video Views</div></div>
+      <div class="tr-item"><div class="tr-val">$591</div><div class="tr-label">CPM Promedio</div></div>
+      <div class="tr-item"><div class="tr-val">$429</div><div class="tr-label">CPC Promedio</div></div>
     </div>
 
     <p class="section-title">Por plataforma</p>
@@ -1069,31 +1068,31 @@
             <div class="platform-icon icon-meta">f</div>
             Meta Platform
           </div>
-          <div class="invest-badge">$230.545</div>
+          <div class="invest-badge">$378.015</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
             <div class="m-label">Alcance</div>
-            <div class="m-value" data-counter="621601" data-format="number">0</div>
+            <div class="m-value" data-counter="1013593" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="864557" data-format="number">0</div>
+            <div class="m-value" data-counter="1409799" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="996" data-format="number">0</div>
+            <div class="m-value" data-counter="1564" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Video Views</div>
-            <div class="m-value" data-counter="1210" data-format="number">0</div>
+            <div class="m-value" data-counter="2538" data-format="number">0</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$267</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$231</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPV</div><div class="cpm-val">$190</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$268</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$242</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPV</div><div class="cpm-val">$149</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
           <p style="font-size:12px">🏆 <strong>Mayor alcance</strong> al menor CPM. Ideal para awareness masivo.</p>
@@ -1107,34 +1106,34 @@
             <div class="platform-icon icon-linkedin">in</div>
             LinkedIn
           </div>
-          <div class="invest-badge">$423.585</div>
+          <div class="invest-badge">$767.820</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
             <div class="m-label">Alcance</div>
-            <div class="m-value" data-counter="248061" data-format="number">0</div>
+            <div class="m-value" data-counter="508141" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="572873" data-format="number">0</div>
+            <div class="m-value" data-counter="1089515" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="502" data-format="number">0</div>
+            <div class="m-value" data-counter="996" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Video Views</div>
-            <div class="m-value" data-counter="146138" data-format="number">0</div>
+            <div class="m-value" data-counter="354701" data-format="number">0</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$739</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$844</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPV</div><div class="cpm-val">$3</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$705</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$771</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPV</div><div class="cpm-val">$2</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
-          <p style="font-size:12px">🎯 <strong>Audiencia profesional de alto valor</strong>. 4 registros directos desde LinkedIn.</p>
+          <p style="font-size:12px">🎯 <strong>Audiencia profesional de alto valor</strong>. 19 registros directos desde LinkedIn.</p>
         </div>
       </div>
 
@@ -1145,26 +1144,26 @@
             <div class="platform-icon icon-search">G</div>
             Google Search
           </div>
-          <div class="invest-badge">$138.796</div>
+          <div class="invest-badge">$342.345</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="6428" data-format="number">0</div>
+            <div class="m-value" data-counter="20182" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="296" data-format="number">0</div>
+            <div class="m-value" data-counter="909" data-format="number">0</div>
           </div>
           <div class="metric-item" style="grid-column:1/-1">
             <div class="m-label">Duración media de sesión</div>
-            <div class="m-value" style="color:var(--btg-green)">04:19</div>
+            <div class="m-value" style="color:var(--btg-green)">01:10</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$469</div></div>
-          <div class="cpm-item"><div class="cpm-label">CTR</div><div class="cpm-val">4.6%</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$377</div></div>
+          <div class="cpm-item"><div class="cpm-label">CTR</div><div class="cpm-val">4.5%</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
           <p style="font-size:12px">🔍 <strong>Captura intención de búsqueda</strong>. Usuarios que ya buscan ETFs activamente — la duración de sesión refleja un interés genuino y profundo.</p>
@@ -1172,18 +1171,18 @@
       </div>
     </div>
 
-    <p class="section-title">Distribución de presupuesto · 23 Mar – 05 Abr</p>
+    <p class="section-title">Distribución de presupuesto · 23 Mar – 12 Abr</p>
     <div class="grid-charts">
       <div class="chart-card fade-in">
         <h3>Inversión por plataforma</h3>
-        <p>Inversión acumulada Artool · 23 Mar – 05 Abr</p>
+        <p>Inversión acumulada Artool · 23 Mar – 12 Abr</p>
         <div class="chart-wrap" style="max-height:240px">
           <canvas id="chartDonut"></canvas>
         </div>
       </div>
       <div class="chart-card fade-in">
         <h3>Alcance e Impresiones por plataforma</h3>
-        <p>Distribución de volumen acumulado · 23 Mar – 05 Abr</p>
+        <p>Distribución de volumen acumulado · 23 Mar – 12 Abr</p>
         <div class="chart-wrap" style="max-height:240px">
           <canvas id="chartBar"></canvas>
         </div>
@@ -1199,14 +1198,14 @@
       <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#6B7280;padding:3px 12px;border-radius:20px">Otros Medios</span>
       <span style="font-size:12px;color:var(--text-muted)">Gestión: <strong style="color:var(--text-main)">Havas</strong></span>
     </div>
-    <p class="section-title">Resumen acumulado · 23 Mar – 05 Abr</p>
+    <p class="section-title">Resumen acumulado · 23 Mar – 12 Abr</p>
     <div class="total-row fade-in">
-      <div class="tr-item"><div class="tr-val" data-counter="1497280" data-format="money">$0</div><div class="tr-label">Inversión</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="214000" data-format="number">0</div><div class="tr-label">Alcance</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="912921" data-format="number">0</div><div class="tr-label">Impresiones</div></div>
-      <div class="tr-item"><div class="tr-val" data-counter="1741" data-format="number">0</div><div class="tr-label">Clics</div></div>
-      <div class="tr-item"><div class="tr-val">$1.640</div><div class="tr-label">CPM Promedio</div></div>
-      <div class="tr-item"><div class="tr-val">$860</div><div class="tr-label">CPC Promedio</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="14266030" data-format="money">$0</div><div class="tr-label">Inversión</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="7646885" data-format="number">0</div><div class="tr-label">Impresiones</div></div>
+      <div class="tr-item"><div class="tr-val" data-counter="11172" data-format="number">0</div><div class="tr-label">Clics</div></div>
+      <div class="tr-item"><div class="tr-val">$3.137</div><div class="tr-label">CPM Promedio</div></div>
+      <div class="tr-item"><div class="tr-val">$1.277</div><div class="tr-label">CPC Promedio</div></div>
+      <div class="tr-item"><div class="tr-val">6</div><div class="tr-label">Medios activos</div></div>
     </div>
 
     <p class="section-title">Por medio</p>
@@ -1219,31 +1218,27 @@
             <div class="platform-icon" style="background:#FFF3E0;color:#E65100;font-size:12px;font-weight:800">DF</div>
             DF Digital
           </div>
-          <div class="invest-badge">$375.000</div>
+          <div class="invest-badge">$4.375.000</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
-            <div class="m-label">Alcance</div>
-            <div class="m-value" data-counter="51000" data-format="number">0</div>
-          </div>
-          <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="341846" data-format="number">0</div>
+            <div class="m-value" data-counter="500924" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="170" data-format="number">0</div>
+            <div class="m-value" data-counter="206" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Sesiones</div>
-            <div class="m-value" data-counter="56" data-format="number">0</div>
+            <div class="m-value" data-counter="106" data-format="number">0</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$1.097</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$2.206</div></div>
-          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">00:57</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$8.733</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$21.237</div></div>
+          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">01:35</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
           <p style="font-size:12px">📰 <strong>Diario Financiero</strong> — audiencia financiera de alto valor.</p>
@@ -1257,34 +1252,30 @@
             <div class="platform-icon" style="background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:800">EM</div>
             Emol Digital
           </div>
-          <div class="invest-badge">$500.000</div>
+          <div class="invest-badge">$4.118.750</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
-            <div class="m-label">Alcance</div>
-            <div class="m-value" data-counter="53000" data-format="number">0</div>
-          </div>
-          <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="251957" data-format="number">0</div>
+            <div class="m-value" data-counter="1976843" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="318" data-format="number">0</div>
+            <div class="m-value" data-counter="1963" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Sesiones</div>
-            <div class="m-value" data-counter="175" data-format="number">0</div>
+            <div class="m-value" data-counter="177" data-format="number">0</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$1.984</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$1.572</div></div>
-          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">01:27</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$2.083</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$2.098</div></div>
+          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">01:14</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
-          <p style="font-size:12px">🗞️ <strong>Mayor duración de sesión</strong> entre los tres medios.</p>
+          <p style="font-size:12px">🗞️ <strong>Mayor volumen de impresiones</strong> entre medios con inversión.</p>
         </div>
       </div>
 
@@ -1295,34 +1286,99 @@
             <div class="platform-icon" style="background:#FCE4EC;color:#C62828;font-size:11px;font-weight:800">BB</div>
             Bio Bio
           </div>
-          <div class="invest-badge">$622.280</div>
+          <div class="invest-badge">$3.772.280</div>
         </div>
         <div class="metric-grid">
           <div class="metric-item">
-            <div class="m-label">Alcance</div>
-            <div class="m-value" data-counter="110000" data-format="number">0</div>
-          </div>
-          <div class="metric-item">
             <div class="m-label">Impresiones</div>
-            <div class="m-value" data-counter="319118" data-format="number">0</div>
+            <div class="m-value" data-counter="1819118" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Clics</div>
-            <div class="m-value" data-counter="1253" data-format="number">0</div>
+            <div class="m-value" data-counter="6503" data-format="number">0</div>
           </div>
           <div class="metric-item">
             <div class="m-label">Sesiones</div>
-            <div class="m-value" data-counter="674" data-format="number">0</div>
+            <div class="m-value" data-counter="1016" data-format="number">0</div>
           </div>
         </div>
         <div class="divider"></div>
         <div class="cpm-row">
-          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$1.950</div></div>
-          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$497</div></div>
-          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">00:39</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$2.074</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$580</div></div>
+          <div class="cpm-item"><div class="cpm-label">Dur.</div><div class="cpm-val">00:34</div></div>
         </div>
         <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
-          <p style="font-size:12px">📻 <strong>Mayor volumen de clics y sesiones</strong> entre los tres medios.</p>
+          <p style="font-size:12px">📻 <strong>Mayor volumen de clics y sesiones</strong> entre los medios.</p>
+        </div>
+      </div>
+
+      <!-- MEDIA STREAM -->
+      <div class="platform-card fade-in">
+        <div class="platform-header">
+          <div class="platform-name">
+            <div class="platform-icon" style="background:#E8EAF6;color:#3949AB;font-size:10px;font-weight:800">MS</div>
+            Media Stream
+          </div>
+          <div class="invest-badge">$2.000.000</div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-item">
+            <div class="m-label">Impresiones</div>
+            <div class="m-value" data-counter="250000" data-format="number">0</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-label">Clics</div>
+            <div class="m-value" data-counter="2500" data-format="number">0</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="cpm-row">
+          <div class="cpm-item"><div class="cpm-label">CPM</div><div class="cpm-val">$8.000</div></div>
+          <div class="cpm-item"><div class="cpm-label">CPC</div><div class="cpm-val">$800</div></div>
+        </div>
+        <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
+          <p style="font-size:12px">🎬 <strong>Video streaming</strong> — alcance en audiencias de alto consumo digital.</p>
+        </div>
+      </div>
+
+      <!-- LA TERCERA -->
+      <div class="platform-card fade-in">
+        <div class="platform-header">
+          <div class="platform-name">
+            <div class="platform-icon" style="background:#F3E5F5;color:#6A1B9A;font-size:10px;font-weight:800">LT</div>
+            La Tercera
+          </div>
+          <div class="invest-badge" style="background:rgba(106,27,154,0.1);color:#6A1B9A">Impresiones</div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-item" style="grid-column:1/-1">
+            <div class="m-label">Impresiones</div>
+            <div class="m-value" data-counter="3000000" data-format="number">0</div>
+          </div>
+        </div>
+        <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
+          <p style="font-size:12px">📰 <strong>La Tercera + Pulso</strong> — cobertura en medios de credibilidad financiera nacional.</p>
+        </div>
+      </div>
+
+      <!-- CNN -->
+      <div class="platform-card fade-in">
+        <div class="platform-header">
+          <div class="platform-name">
+            <div class="platform-icon" style="background:#FFEBEE;color:#C62828;font-size:10px;font-weight:800">CNN</div>
+            CNN Chile
+          </div>
+          <div class="invest-badge" style="background:rgba(198,40,40,0.1);color:#C62828">Impresiones</div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-item" style="grid-column:1/-1">
+            <div class="m-label">Impresiones</div>
+            <div class="m-value" data-counter="100000" data-format="number">0</div>
+          </div>
+        </div>
+        <div class="insight-box" style="margin-top:14px; padding:10px 14px;">
+          <p style="font-size:12px">📺 <strong>CNN Chile</strong> — audiencia informada de alto perfil financiero.</p>
         </div>
       </div>
 
@@ -1338,7 +1394,7 @@
   <!-- ══════ AUDIENCIAS ══════ -->
   <section class="section" id="section-audiencias">
 
-    <p class="section-title">Audiencias · 23 Mar – 05 Abr</p>
+    <p class="section-title">Audiencias · 23 Mar – 12 Abr</p>
     <div class="grid-6">
 
       <div class="audience-card fade-in">
@@ -1346,24 +1402,24 @@
         <div class="aud-name">Banca Privada</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="103975" data-format="number" data-raw="103975">0</div>
+          <div class="a-value" data-counter="228073" data-format="number" data-raw="228073">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="226307" data-format="number" data-raw="226307">0</div>
+          <div class="a-value" data-counter="486913" data-format="number" data-raw="486913">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="937">$937</div>
+          <div class="a-value" data-raw="723">$723</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
-          <div class="a-value" data-raw="2.2">2.2x</div>
+          <div class="a-value" data-raw="2.1">2.1x</div>
           <div class="a-sub">por persona</div>
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="519" data-format="number" data-raw="519">0</div>
+          <div class="a-value" data-counter="871" data-format="number" data-raw="871">0</div>
         </div>
         <span class="aud-tag tag-linkedin">LinkedIn</span>
       </div>
@@ -1373,24 +1429,24 @@
         <div class="aud-name">Altos Cargos</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="121700" data-format="number" data-raw="121700">0</div>
+          <div class="a-value" data-counter="218374" data-format="number" data-raw="218374">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="259676" data-format="number" data-raw="259676">0</div>
+          <div class="a-value" data-counter="447666" data-format="number" data-raw="447666">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="413">$413</div>
+          <div class="a-value" data-raw="393">$393</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
-          <div class="a-value" data-raw="2.1">2.1x</div>
+          <div class="a-value" data-raw="2.0">2.0x</div>
           <div class="a-sub">por persona</div>
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="403" data-format="number" data-raw="403">0</div>
+          <div class="a-value" data-counter="609" data-format="number" data-raw="609">0</div>
         </div>
         <span class="aud-tag tag-linkedin">LinkedIn</span>
       </div>
@@ -1400,15 +1456,15 @@
         <div class="aud-name">Asset Management</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="32235" data-format="number" data-raw="32235">0</div>
+          <div class="a-value" data-counter="57668" data-format="number" data-raw="57668">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="86890" data-format="number" data-raw="86890">0</div>
+          <div class="a-value" data-counter="154936" data-format="number" data-raw="154936">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="1198">$1.198</div>
+          <div class="a-value" data-raw="1548">$1.548</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
@@ -1417,7 +1473,7 @@
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="279" data-format="number" data-raw="279">0</div>
+          <div class="a-value" data-counter="375" data-format="number" data-raw="375">0</div>
         </div>
         <span class="aud-tag tag-linkedin">LinkedIn</span>
       </div>
@@ -1427,15 +1483,15 @@
         <div class="aud-name">Inversionistas Retail</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="455646" data-format="number" data-raw="455646">0</div>
+          <div class="a-value" data-counter="652720" data-format="number" data-raw="652720">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="592092" data-format="number" data-raw="592092">0</div>
+          <div class="a-value" data-counter="841554" data-format="number" data-raw="841554">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="229">$229</div>
+          <div class="a-value" data-raw="224">$224</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
@@ -1444,7 +1500,7 @@
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="330" data-format="number" data-raw="330">0</div>
+          <div class="a-value" data-counter="441" data-format="number" data-raw="441">0</div>
         </div>
         <span class="aud-tag tag-meta">Meta</span>
       </div>
@@ -1454,15 +1510,15 @@
         <div class="aud-name">Interés ETF</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="139302" data-format="number" data-raw="139302">0</div>
+          <div class="a-value" data-counter="311659" data-format="number" data-raw="311659">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="182478" data-format="number" data-raw="182478">0</div>
+          <div class="a-value" data-counter="411219" data-format="number" data-raw="411219">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="236">$236</div>
+          <div class="a-value" data-raw="237">$237</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
@@ -1471,7 +1527,7 @@
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="107" data-format="number" data-raw="107">0</div>
+          <div class="a-value" data-counter="216" data-format="number" data-raw="216">0</div>
         </div>
         <span class="aud-tag tag-meta">Meta</span>
       </div>
@@ -1481,24 +1537,24 @@
         <div class="aud-name">Alto Patrimonio</div>
         <div class="aud-stat" data-metric="alcance">
           <div class="a-label">Alcance</div>
-          <div class="a-value" data-counter="48962" data-format="number" data-raw="48962">0</div>
+          <div class="a-value" data-counter="93178" data-format="number" data-raw="93178">0</div>
         </div>
         <div class="aud-stat" data-metric="impresiones">
           <div class="a-label">Impresiones</div>
-          <div class="a-value" data-counter="89927" data-format="number" data-raw="89927">0</div>
+          <div class="a-value" data-counter="156966" data-format="number" data-raw="156966">0</div>
         </div>
         <div class="aud-stat" data-metric="cpm">
           <div class="a-label">CPM</div>
-          <div class="a-value" data-raw="579">$579</div>
+          <div class="a-value" data-raw="585">$585</div>
         </div>
         <div class="aud-stat" data-metric="frecuencia">
           <div class="a-label">Frecuencia</div>
-          <div class="a-value" data-raw="1.8">1.8x</div>
+          <div class="a-value" data-raw="1.7">1.7x</div>
           <div class="a-sub">por persona</div>
         </div>
         <div class="aud-stat" data-metric="sesiones">
           <div class="a-label">Sesiones web</div>
-          <div class="a-value" data-counter="125" data-format="number" data-raw="125">0</div>
+          <div class="a-value" data-counter="202" data-format="number" data-raw="202">0</div>
         </div>
         <span class="aud-tag tag-meta">Meta</span>
       </div>
@@ -1508,12 +1564,12 @@
     <p class="section-title" style="margin-top:36px">Lectura ejecutiva de audiencias</p>
     <div class="insight-box fade-in" style="margin-bottom:28px">
       <p>
-        En el período 23 Mar – 05 Abr, la campaña impactó <strong>6 segmentos diferenciados</strong>, generando en conjunto <strong>1.763 sesiones en landing</strong>.
-        En LinkedIn, <strong>Asset Management</strong> alcanzó la meta de frecuencia con <strong>2.7x</strong> por persona, confirmando un contacto sostenido con el
-        decisor de inversiones. <strong>Banca Privada</strong> lidera en sesiones web del período (519), señal clara de alta intención.
-        En Meta, la audiencia <strong>Alto Patrimonio</strong> registra <strong>48.962 personas alcanzadas</strong> y frecuencia 1.8x —
-        un segmento de alto valor con CPM de $579. <strong>Inversionistas Retail</strong> domina en volumen con <strong>455.646 personas alcanzadas</strong>
-        al CPM más bajo de Meta (<strong>$229</strong>). El balance entre profundidad (LinkedIn) y escala (Meta)
+        En el período 23 Mar – 12 Abr, la campaña impactó <strong>6 segmentos diferenciados</strong>, generando en conjunto <strong>2.714 sesiones en landing</strong>.
+        En LinkedIn, <strong>Asset Management</strong> mantiene la mayor frecuencia con <strong>2.7x</strong> por persona, confirmando un contacto sostenido con el
+        decisor de inversiones. <strong>Banca Privada</strong> lidera en sesiones web del período (871), señal clara de alta intención.
+        En Meta, la audiencia <strong>Alto Patrimonio</strong> registra <strong>93.178 personas alcanzadas</strong> y frecuencia 1.7x —
+        un segmento de alto valor con CPM de $585. <strong>Inversionistas Retail</strong> domina en volumen con <strong>652.720 personas alcanzadas</strong>
+        al CPM más bajo de Meta (<strong>$224</strong>). El balance entre profundidad (LinkedIn) y escala (Meta)
         es consistente con la estrategia de funnel completo de la campaña.
       </p>
     </div>
@@ -1539,7 +1595,7 @@
   <!-- ══════ GA4 ══════ -->
   <section class="section" id="section-ga4">
 
-    <p class="section-title">Tráfico al landing · 23 Mar – 06 Abr</p>
+    <p class="section-title">Tráfico al landing · 23 Mar – 12 Abr</p>
     <div class="grid-3" style="gap:16px; margin-bottom:20px;">
       <div class="ga4-highlight fade-in">
         <div class="gh-icon">👥</div>
@@ -1560,7 +1616,7 @@
 
     <p class="section-title">Sesiones por fuente / medio</p>
     <div class="chart-card fade-in" style="margin-bottom:28px">
-      <h3 id="ga4-source-period">23 Mar – 06 Abr</h3>
+      <h3 id="ga4-source-period">23 Mar – 12 Abr</h3>
       <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Sesiones en <strong>btgpactual.cl/…/etf</strong> atribuidas a la campaña ETF Genérico, desglosadas por fuente y medio</p>
       <div id="ga4-source-empty" style="display:none;text-align:center;padding:32px;color:var(--text-muted);font-size:13px">Sin datos de fuente/medio disponibles</div>
       <div class="chart-wrap" style="max-height:280px">
@@ -1579,11 +1635,11 @@
         </div>
         <div class="funnel-metrics">
           <div class="funnel-m">
-            <div class="fm-val" data-counter="2356779" data-format="number">0</div>
+            <div class="fm-val" data-counter="10166381" data-format="number">0</div>
             <div class="fm-label">Impresiones</div>
           </div>
           <div class="funnel-m">
-            <div class="fm-val" data-counter="1134662" data-format="number">0</div>
+            <div class="fm-val" data-counter="1521734" data-format="number">0</div>
             <div class="fm-label">Alcance</div>
           </div>
         </div>
@@ -1597,11 +1653,11 @@
         </div>
         <div class="funnel-metrics">
           <div class="funnel-m">
-            <div class="fm-val" data-counter="1794" data-format="number">0</div>
+            <div class="fm-val" data-counter="3469" data-format="number">0</div>
             <div class="fm-label">Clics totales</div>
           </div>
           <div class="funnel-m">
-            <div class="fm-val" data-counter="147348" data-format="number">0</div>
+            <div class="fm-val" data-counter="357239" data-format="number">0</div>
             <div class="fm-label">Video Views</div>
           </div>
         </div>
@@ -1745,9 +1801,9 @@ function initCharts() {
   new Chart(document.getElementById('chartDonut'), {
     type: 'doughnut',
     data: {
-      labels: ['Meta ($230.545)', 'LinkedIn ($423.585)', 'Search ($138.796)'],
+      labels: ['Meta ($378.015)', 'LinkedIn ($767.820)', 'Search ($342.345)'],
       datasets: [{
-        data: [230545, 423585, 138796],
+        data: [378015, 767820, 342345],
         backgroundColor: btgAlpha,
         borderColor: '#fff',
         borderWidth: 3,
@@ -1776,13 +1832,13 @@ function initCharts() {
       datasets: [
         {
           label: 'Alcance',
-          data: [621601, 248061, 0],
+          data: [1013593, 508141, 0],
           backgroundColor: 'rgba(0,66,165,0.8)',
           borderRadius: 6
         },
         {
           label: 'Impresiones',
-          data: [864557, 572873, 6428],
+          data: [1409799, 1089515, 20182],
           backgroundColor: 'rgba(21,101,192,0.5)',
           borderRadius: 6
         }
@@ -1854,7 +1910,7 @@ function highlightAudienceWinners() {
 
   // Etiqueta período en KPI metas
   document.querySelectorAll('.kpi-week-label').forEach(el => {
-    el.textContent = `23 Mar – 05 Abr`;
+    el.textContent = `23 Mar – 12 Abr`;
   });
 })();
 
@@ -1947,7 +2003,7 @@ async function downloadPDF() {
       pdf.text('BTG ETF GENÉRICO', 8, 6.5);
       pdf.setFont('helvetica', 'normal');
       pdf.text(labels[i].toUpperCase(), PW / 2, 6.5, { align: 'center' });
-      pdf.text('23 Mar – 05 Abr 2026  ·  Período acumulado', PW - 8, 6.5, { align: 'right' });
+      pdf.text('23 Mar – 12 Abr 2026  ·  Período acumulado', PW - 8, 6.5, { align: 'right' });
 
       // Footer strip
       pdf.setFillColor(240, 244, 255);
@@ -1980,7 +2036,7 @@ async function downloadPDF() {
     document.getElementById(prevSection)?.classList.add('active');
     document.querySelector('[data-tab="' + prevTab + '"]')?.classList.add('active');
 
-    pdf.save('BTG_ETF_Generico_23-29Marzo.pdf');
+    pdf.save('BTG_ETF_Generico_23Mar-12Abr.pdf');
 
   } catch (err) {
     console.error('PDF error:', err);
