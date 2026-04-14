@@ -228,10 +228,24 @@
           'btg_etf_generico_2026_alcance': 'Alcance Paid Social',
           'btg_etf_generico_2026':         'Display / Medios',
         };
+        const SOURCE_NAMES = {
+          'linkedin':       'LinkedIn',
+          'meta_platform':  'Meta',
+          'biobio':         'BioBio',
+          'money_talks':    'Money Talks',
+          'emol':           'Emol',
+          'sidebar_ML':     'MercadoLibre',
+          'df':             'DF Digital',
+          'instagram':      'Instagram',
+          'CNN':            'CNN Chile',
+        };
         const visible = week.campaigns.filter(c => c.name !== 'btg_etf_usa_landing');
         container.innerHTML = visible.map(c => {
           const label   = CAMP_LABELS[c.name] || c.name;
-          const medios  = (c.sources || []).map(s => s.source_medium.split(' / ')[0]).join(', ');
+          const medios  = (c.sources || []).map(s => {
+            const key = s.source_medium.split(' / ')[0];
+            return SOURCE_NAMES[key] || key;
+          }).join(', ');
           return `
           <div class="stat-mini fade-in">
             <div class="label" style="text-transform:none;letter-spacing:0">${c.name}</div>
