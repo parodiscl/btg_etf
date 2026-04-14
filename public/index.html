@@ -34,11 +34,13 @@
     onAuthStateChanged(auth, user => {
       if (user) {
         showDashboard(user);
-        loadGA4Data();
       } else {
         showLoginScreen();
       }
     });
+
+    // GA4 data es pública — carga siempre sin depender de auth
+    loadGA4Data();
 
     window.doLogin  = () => signInWithPopup(auth, provider).catch(e => alert('Error al iniciar sesión.'));
     window.doLogout = () => signOut(auth);
