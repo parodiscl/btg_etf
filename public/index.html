@@ -164,7 +164,8 @@
       set('ga4-funnel-sesiones', fmt(week.total_sessions));
       set('ga4-btn-usuarios',    fmt(week.button_users));
       set('ga4-btn-eventos',     fmt(week.button_events));
-      if (week.period) set('ga4-periodo', week.period);
+      // periodo fijo del informe consolidado
+      set('ga4-periodo', '23 Mar – 19 Abr');
 
       // ── Gráfico: sesiones por fuente/medio ──
       if (week.campaigns?.length) {
@@ -923,7 +924,7 @@
         <p>
           Asset Management · Etapa de Awareness · Mes 1
           <span style="color:rgba(255,255,255,0.3)">·</span>
-          <span id="ga4-periodo">24–30 Mar</span>
+          <span id="ga4-periodo">23 Mar – 19 Abr</span>
           <span style="color:rgba(255,255,255,0.3)">·</span>
           <span class="status-inline"><span class="status-dot"></span>En curso</span>
         </p>
